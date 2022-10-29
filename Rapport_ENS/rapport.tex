@@ -1,0 +1,235 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{ieeetrantools}
+\usepackage{eqnarray}
+\newtheorem{theorem}{Théorème}
+\newtheorem{lemma}{Lemme}
+\newtheorem{definition}{Définition}
+\newtheorem{cor}{Corollaire}
+\newtheorem{prop}{Proposition}
+\author{Matthieu MEUNIER}
+\title{Etude de groupes finis : Théorème de Chermak-Delgado et applications.}
+\date{}
+\begin{document}
+
+\pagenumbering{gobble}
+\maketitle
+\newpage
+\pagenumbering{arabic}
+\tableofcontents
+
+
+\section{Introduction}
+
+Lorsque se pose la question de l'ordre d'un sous-groupe d'un groupe fini, le théorème de Lagrange nous assure que les valeurs possibles ne sont pas quelconques. On rapelle 
+\begin{theorem}
+
+Soit $G$ un groupe fini. Tout sous-groupe $\:H$ de $\:G$ vérifie $|H| \: \: | \: \: |G|$.
+
+\end{theorem}
+
+Cependant, rien ne nous assure que pour tout diviseur de l'ordre du groupe, on dispose d'un sous-groupe d'ordre ce diviseur. Ce constat est le point de départ du travail exposé ici, l'objectif étant d'obtenir plus d'informations sur les ordres des sous-groupes d'un groupe fini. Le pilier de l'étude est un théorème démontré par Andrew Chermak et Alberto Delgado en 1989, que nous présentons dans un premier temps, pour ensuite établir des propriétés sur certains groupes finis.
+
+\paragraph{Notations}
+\smallbreak
+\renewcommand{\labelitemi}{$\bullet$}
+\begin{itemize}
+
+
+\item Dans tout le texte, $(G,\cdot)$ désigne un groupe fini noté multiplicativement.
+\item L'ordre d'un élément $x \in G$ sera noté $\omega (x)$ (ainsi $\omega (x) \: \: | \:\: |G|$).
+\item "$H \leq G$" désigne la proposition "\textit{H est un sous-groupe de G}".
+\item Pour $H \leq G$, on notera $[G:H]=|G/H|$ l'indice de H dans G.
+\item "$H \triangleleft G$" signifie "\textit{H est un sous-groupe distingué de G}".
+\item Pour $A \subset G$, on note $C_{G}(A)=\{\: g \in G \: | \: \forall a \in A, ga=ag \: \}$. On vérifie aisément que $C_{G}(A) \leq G$.
+\end{itemize}
+
+\section{Le théorème de Chermak-Delgado}
+On énonce
+
+\begin{theorem}
+Soit G un groupe fini. G possède un sous-groupe abélien distingué $I$ tel que, pour tout $A \leq G$ abélien $$[G:I] \leq [G:A]^{2}$$ soit, de façon équivalente $$|A|^{2} \leq |G|\times |I|$$
+\end{theorem}
+\subsection{Préliminaires}
+Le point de départ est une application du lemme du berger.
+\begin{lemma}
+Pour tous $H,K \leq G$, $|HK| = \dfrac{|H| \times |K|}{|H \cap K|}$. 
+\smallbreak
+En particulier,$\dfrac{|H| \times |K|}{|H \cap K|} \leq |<H \cup K>|$.  
+\end{lemma}
+L'idée principale de Chermak et Delgado a été d'introduire une mesure sur l'ensemble des sous-groupes de G, qui traduit un équilibre entre l'ordre d'un sous-groupe H de G et celui de $C_{G}(H)$. Nous utiliserons une version simplifiée de cette mesure, qui nous suffit pour l'étude. 
+\begin{definition}
+Pour $H \leq G$, on définit $\mu (H) = |H| \times |C_{G}(H)|$.
+\end{definition}
+Du lemme 1, on tire $$ \forall H,K \leq G,\:\: \mu (H) \mu (K) \leq \mu (H \cap K) \mu (<H \cup K>)$$
+
+On peut alors se poser la question des sous-groupes de G qui maximisent $\mu$. A cet effet, on pose $m=max\{ \mu (H)\:\:|\:\: H \leq G\}$ et $\mathcal{E} = \{ H \leq G \:\:|\:\: \mu (H) = m \}$.
+\begin{lemma}
+$(\mathcal{E} , \subset )$ possède un minimum pour l'inclusion, noté $I$. C'est le sous-groupe de Chermak-Delgado de G.
+\end{lemma}
+\begin{proof}
+Il suffit de poser $I=\bigcap_{H \in \mathcal{E}}H$. Cette intersection est non vide par définition de $\mathcal{E}$ et elle est finie. L'inégalité précédente (qui devient une égalité pour $H,K \in \mathcal{E}$) permet de conclure.
+\end{proof}
+\subsection{Preuve du résultat}
+Pour tout $H \leq G$, on a 
+$$\mu (H) \leq \mu (I) \leq |I|\times |G|$$
+En particulier, si $A \leq G$ est abélien, alors $A \leq C_{G}(A)$, donc 
+$$|A|^{2} \leq |I|\times |G|$$ 
+soit
+$$ [G:I] \leq [G:A]^{2}$$
+Il reste à montrer que I est abélien et distingué. Le caractère abélien résulte de l'inégalité suivante 
+$$ \forall H \leq G , \:\: \mu (H) \leq \mu (C_{G}(H))$$
+inégalité qui découle immédiatement de l'inclusion $P \subset C_{G}(C_{G}(P))$, valable pour toute partie $P$ de $G$; par $\mu$-maximalité de $I$, on a $\mu(I)=\mu(C_{G}(I))$, et $I$ étant minimal au sens de $(\mathcal{E} , \subset )$, on en déduit que $I \subset C_{G}(I)$, et que $I$ est abélien.
+\newline
+Pour le caractère distingué, on va montrer une propriété plus forte sur $I$, à savoir que $I$ est un sous-groupe caractéristique de $G$, c'est-à-dire que $I$ est stable par tout automorphisme de $G$. Soit alors $\sigma \in Aut(G)$. $\sigma$ étant bijective on a $|\sigma (I) | = |I|$, et d'autre part (on ne détaille pas la preuve) $\sigma (C_{G}(I))=C_{G}(\sigma(I))$ (en particulier on obtient l'égalité des ordres). Ainsi, il vient $\mu(I)=\mu(\sigma(I))$, puis $I \subset \sigma(I)$. Par égalité des ordres, $I=\sigma (I)$, ce qui prouve que $I$ est un sous-groupe caractéristique de $G$. En particulier, $I$ est stable par les automorphismes intérieurs, donc $I$ est distingué, ce qui achève la preuve du théorème de Chermak-Delgado. 
+\newline  
+On a finalement démontré un résultat plus général, que l'on consigne en un nouveau théorème.
+\begin{theorem}
+Soit $G$ un groupe fini. Il existe $I$ sous-groupe abélien distingué de $G$ tel que
+$$\forall \: H \leq G, \:\:\: |H| \times |C_{G}(H)| \leq |I| \times |G|$$ 
+\end{theorem}
+\section{Applications du théorème de Chermak-Delgado}
+On peut à présent se poser la question de l'efficacité d'une telle majoration. Pour un groupe abélien par exemple, la majoration est sans intérêt (car $I=G$ dans ce cas). Un cas plus pertinent est celui des groupes simples non abéliens, car pour ces groupes on a automatiquement $I=\{1_{G}\}$. On en déduit un corollaire sur l'ordre des éléments de tels groupes.
+\begin{cor}
+Soit $G$ un groupe fini simple non abélien. Alors tout $x \in G$ vérifie $$\omega (x) ^{2} \leq |G|$$
+\end{cor}
+
+\begin{proof}
+On applique le théorème 1 à $A=\:<x>$ (il s'agit bien d'un sous-groupe abélien de $G$) et $I=\{1_{G}\}$ (le seul sous-groupe abélien distingué de $G$).
+\end{proof}
+
+\subsection{Quelques résultats utiles}
+
+Nous commençons par établir un lemme de Cauchy.
+\begin{lemma}
+Soit $G$ un groupe fini d'ordre $n$, et $p$ premier tel que $p\: | \: n$. Alors $G$ possède un élément d'ordre $p$.
+\end{lemma}
+
+\begin{proof}
+On pose $E = \{(x_{1},...,x_{p}) \in G^{p}, x_{1}...x_{p} = 1_{G} \}$, et on définit la relation $\sim$ sur E de sorte que, pour $x,y \in E$, $x \sim y$ si et seulement si $(y_{1},...,y_{p})$ s'obtient par permutation circulaire de $(x_{1},...,x_{p})$. On vérifie que $\sim$ est une relation d'équivalence, et on note, pour $x \in E$, $\gamma (x)$ la classe d'équivalence de $x$. Soit alors $x=(x_{1},...,x_{p}) \in E$ et calculons $| \gamma (x)|$.
+
+\renewcommand{\labelitemi}{$-$}
+\begin{itemize}
+\item Si $x_{1} = ... = x_{p}$, alors $| \gamma (x) | = 1$.
+\item Sinon, montrons que $| \gamma (x) | = p$. On a clairement $| \gamma (x) | \leq p$, et supposons par l'absurde que $| \gamma (x) | < p$. On dispose alors de $k \in \{2,...,p\}$ tel que $(x_{k},...,x_{p},x_{1},...,x_{k-1})= (x_{1},...,x_{p})$, de sorte que $x_{k}=x_{1}=x_{1+(p-k+1 \:\: mod \: p)}$ et plus généralement 
+$$ \forall \: l\in \mathbb{N}, \:\: x_{1+(l(p-k+1) \:\: mod \: p)}=x_{k}$$
+Or, $p-k+1$ est premier avec $p$, donc c'est un générateur de $(\mathbb{Z}/p\mathbb{Z},+)$, donc $l(p-k+1)$ décrit tous les entiers modulo $p$, quand l parcourt $\mathbb{N}$, d'où $x_{1}=...=x_{p}$, ce qui est absurde.
+\end{itemize}
+Or, on a clairement $|E|=n^{p-1}$, donc en partitionnant $E$ selon ses classes d'équivalence, on obtient, en notant $C=|\{x \in G,x^{p}=1_{G}\}|$
+$$n^{p-1} = C \:\: mod\: p$$
+ $p$ divise $n$, donc $C = 0 \:\: mod \: p$, et comme $C\geq 1$, on en déduit $C\geq 2$, donc $G$ possède un élément d'ordre $p$.
+
+\end{proof}
+
+On admet le résultat suivant, et on rappelle que $G$ désigne un groupe fini.
+
+\begin{lemma}
+Soit $x,y \in G$ tels que $\omega(x)$ et $\omega(y)$ sont premiers entre eux et $xy=yx$. Alors $\omega(xy) = \omega(x)\omega(y)$.
+\end{lemma}
+
+On pose, pour $d \in \mathbb{N}^*$, $\Omega_{d} = \{x \in G, \omega(x) = d \}$.
+
+\begin{lemma}
+Soit $p$ premier tel que $p \: | \: |G|$, et $d \in \mathbb{N}^*$ tel que $p$ ne divise pas $d$. On suppose que $G$ n'a pas d'élément d'ordre $dp$. Alors $p \: | \: |\Omega_{d}|$.
+\end{lemma}
+
+\begin{proof}
+D'après le lemme de Cauchy, on dispose de $H$ sous-groupe cyclique de $G$ d'ordre $p$. On considère alors, pour $x \in \Omega_{d}$, 
+$$C(x):= \{hxh^{-1}, h \in H \} \subset \Omega_{d}$$
+$C(x)$ est alors de cardinal au plus $p$, et s'il existe $h,h' \in H$ tel que $h \neq h'$ et $hxh^{-1}=h'xh'^{-1}$, alors $xh^{-1}h'=h^{-1}h'x$ et par le lemme 4, cet élément est d'ordre $dp$ ce qui est absurde. Donc $|C(x)|=p$, puis en écrivant $\Omega_d$ comme réunion disjointe des classes de conjugaison, il vient $p \: | \: |\Omega_d|$. 
+
+\end{proof}
+
+
+\subsection{Etude de l'ordre d'un groupe fini simple non abélien}
+
+Dans cette partie on suppose que $G$ est un groupe fini simple non abélien.
+
+\begin{prop}
+$|G|$ n'est pas de la forme $pq$ où $p$ et $q$ sont des nombres premiers distincts.
+\end{prop}
+
+\begin{proof}
+Raisonnons par l'absurde et supposons $|G| = pq$ avec $ p < q$. D'après le lemme de Cauchy, on dispose de $x \in G$ tel que $\omega(x)=q$. Alors $\omega(x)^2=q^2 > |G|$, ce qui contredit le corollaire 1.
+\end{proof}
+
+\begin{prop}
+$|G|$ n'est pas de la forme $pqr$ où $p$, $q$ et $r$ sont des nombres premiers deux à deux distincts. 
+\end{prop}
+
+\begin{proof}
+Raisonnons par l'absurde et supposons $|G|=pqr$ avec $p < q < r$. Pour $x \in G$, le théorème de Lagrange fournit $\omega(x) \in \{1,p,q,r,pq,pr,qr,pqr\}$. Le lemme de Cauchy assure l'existence d'un élément d'ordre $r$, et le corollaire 1 amène alors $r<pq$. Donc
+$$\{\omega(x), x \in G\} = \{1,p,q,r\}$$
+
+D'après le lemme 5, on a alors $r \: | \: |\Omega_p|$ et $q \: | \: |\Omega_p|$, et enfin $p-1 \: | \: |\Omega_p|$, car un groupe cyclique d'ordre $p$ possède $p-1$ générateurs. Ainsi on dispose de $A \in \mathbb{N}^*$ tel que $|\Omega_p| = Aqr(p-1)$. En raisonnant de façon analogue avec $\Omega_q$ et $\Omega_r$, on dispose de $B,C \in \mathbb{N}^*$ tels que
+$$|G| = |\Omega_p| + |\Omega_q| + |\Omega_r| + |\Omega_1|$$
+i.e
+\begin{eqnarray*}
+ pqr &=& Aqr(p-1) + Br(q-1) + C(r-1) + 1 \\
+     &\geq & pqr - qr + qr - r + r - 1 + 1 \\
+     &=& pqr     
+\end{eqnarray*}      
+Cela impose $C = 1$, soit $|\Omega_r|= r-1 $, mais le lemme 5 nous donne $ pq \: | \: |\Omega_r| $, donc $|\Omega_r| \geq pq > r$, ce qui est absurde.   
+       
+
+\end{proof}
+ 
+\subsection{Etude d'un groupe alterné}
+Dans cette partie nous donnons des éléments de preuve pour montrer que $(A_5,\circ)$ (groupe des permutations paires de $\{1,2,3,4,5\}$) est le seul groupe fini simple non abélien de cardinal inférieur ou égal à $119$.
+
+\begin{prop}
+$(A_5,\circ)$ est un groupe fini simple non abélien de cardinal $60$.
+\end{prop}
+
+\begin{proof}
+Le caractère non abélien ne pose pas de difficulté. On classe les éléments de $A_5$ selon leur décomposition en produit de cycles (en omettant les cycles de longueur 1), et on s'intéresse à leur classe de conjugaison dans $A_5$:
+\begin{itemize}
+\item $C_1:=\{Id\}$
+\item $C_2:=\{(a \:\:b) \circ (c \:\: d), \:\: a,b,c,d \:\:distincts \}$. On a $|C_2|= 15$, et les éléments de $C_2$ sont conjugués deux à deux (\textit{i.e} ils font tous partie de la même classe de conjugaison).
+\item $C_3:= \{(a \:\: b \:\: c),\:\: a,b,c \:\: distincts\}$. On a $|C_3|= 20$ et les élément de $C_3$ sont deux à deux conjugués.
+\item $C_4 := \{(a \:\: b \:\: c \:\: d \:\: e), \:\: a,b,c,d,e \:\: distincts\}$. On a $|C_4|= 24$ et l'on peut montrer que ces éléments sont conjugués à $(1\:\:2\:\:3\:\:4\:\:5)$ ou à $(2\:\:1\:\:3\:\:4\:\:5)$ (mais pas aux deux à la fois, les classes de conjugaison étant distinctes et étant chacune de cardinal $12$).
+\end{itemize}
+On retrouve bien $|A_5|= \sum_{i=1}^{4}|C_i|=60$. Supposons alors par l'absurde que $A_5$ n'est pas simple. On se donne $ H \triangleleft A_5$ non trivial, c'est donc une réunion de classes de conjugaison. On dispose alors de $A,B,C,D \in \{0,1\}$ tels que 
+$$|H| = 1 + 15A + 20B + 12C + 12D$$
+D'autre part, le théorème de Lagrange nous assure que $|H| \in \{2,3,4,6,10,15,20,30\}$, ce qui est incompatible avec la relation précédente, car 
+$$\{1 + 15A + 20B + 12C + 12D, \:\: A,B,C,D \in \{0,1\}\}=\{1,13,16,21,25,28,33,36,40,48,60\}$$ 
+Donc $A_5$ est simple.
+\end{proof}
+
+Nous montrons enfin une propriété sur les groupes d'ordre $72$ (afin de donner un aperçu de la preuve du résultat annoncé plus haut). Nous énonçons d'abord un lemme que nous admettons (il repose sur la notion de plongement dans un groupe alterné que nous n'abordons pas ici). On rappelle que $G$ est un groupe fini simple non abélien et on note, pour $H \leq G$, $c(H):=\{gHg^{-1}, \: g \in G\}$, et 
+$$ \mathcal{D}(G):=\{|c(H)|, \: H \leq G \:\: cyclique\:\: non \:\: trivial\}$$ 
+$$ \Delta(G):=\{n \in \mathbb{N}^*, \: n\:|\:|G| \:\: et \:\: 2|G| \:|\: n!\}$$
+On note enfin $d(G)$ le pgcd des éléments de $\mathcal{D}(G)$.
+\begin{lemma}
+On a $\:\mathcal{D}(G) \subset \Delta(G)$ ainsi que $d(G) = 1$.
+\end{lemma}
+
+\begin{prop}
+Il n'existe pas de groupe fini simple non abélien d'ordre $72$.
+\end{prop}
+
+\begin{proof}
+Par l'absurde, soit un tel groupe $G$ d'ordre $72$. Alors $$\Delta(G)= \{6,\:8,\:9,\:12,\:18,\:24,\:36,\:72\}$$ En particulier $8 \in \mathcal{D}(G)$, sinon $d(G)\geq 3$. On dispose ainsi de $H \leq G$ cyclique tel que $|c(H)|= 8$. On vérifie alors que $N(H) := \{g \in G, \: gHg^{-1}=H\}$ est d'ordre $9$ et qu'il est abélien (car de la forme $p^2$ où $p$ est premier). Or $81 > 72$, cela contredit le théorème 2.
+\end{proof}
+
+\section*{Conclusion}
+
+Ainsi, le théorème de Chermak-Delgado nous a permis d'obtenir une majoration de l'ordre des sous-groupes d'un groupe fini, qui, conjointement avec le théorème de Lagrange, nous permettent dans certains cas de déterminer plus précisément les ordres possibles des sous-groupes que la simple majoration par l'ordre du groupe. D'autre part, il nous aura permis de montrer que certains groupes aux propriétés spécifiques (les groupes finis simples non abéliens ici) ne peuvent être d'ordre quelconque.  
+
+\section*{Références}
+\begin{itemize}
+
+
+\item[1] Josette CALAIS : \textit{Eléments de théorie des groupes} : Puf, 2016. 
+
+\item[2] Christophe BERTAULT : \textit{Le théorème de Chermak-Delgado} : RMS129-4, 2018, p.22-33. 
+
+\end{itemize}
+
+\end{document}
